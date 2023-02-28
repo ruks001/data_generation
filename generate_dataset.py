@@ -122,7 +122,7 @@ if __name__=="__main__":
     len_orig_files = len(orig_files)
     file_num = 0
 
-    for i in range(0, 1500):
+    for i in range(0, 2500):
         fil_sel = np.random.randint(0, len_orig_files)
         image = cv2.imread(temp_im_path + orig_files[fil_sel])
         #     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
@@ -168,3 +168,8 @@ if __name__=="__main__":
         cv2.imwrite(store_img_path + orig_files[fil_sel].replace('.png', str(file_num) + '.png'), cropped_image)
         cv2.imwrite(store_msk_path + orig_files[fil_sel].replace('.png', str(file_num) + '.png'), cropped_mask)
         file_num += 1
+
+    if os.path.exists('temp_img_folder'):
+        shutil.rmtree('temp_img_folder')
+    if os.path.exists('temp_msk_folder'):
+        shutil.rmtree('temp_msk_folder')

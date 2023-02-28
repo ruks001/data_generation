@@ -1,0 +1,5 @@
+/datagen/
+.idea/
+__pycache__/
+/image_data/
+/mask_data/

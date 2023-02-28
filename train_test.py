@@ -1,5 +1,4 @@
 import torch
-import tqdm
 import numpy as np
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader, random_split
@@ -44,7 +43,7 @@ if __name__=="__main__":
 
     image_path = 'image_data'
     mask_path = 'mask_data'
-    model_path = 'unet_pretrained.pth'
+    model_path = 'pretrained_weights/unet_pretrained.pth'
 
     seg_data = segment_data(image_path, mask_path)
     val_size = int(0.1 * len(seg_data))
@@ -141,7 +140,7 @@ if __name__=="__main__":
     plt.xlabel('Epoch', fontdict=font2)
     plt.ylabel('Loss', fontdict=font2)
     plt.legend()
-    plt.savefig('loss_graph.png')
+    plt.savefig('graphs/loss_graph.png')
 
     plt.figure(2)
     plt.plot(tr_dsc, label='training accuracy')
@@ -150,7 +149,7 @@ if __name__=="__main__":
     plt.xlabel('Epoch', fontdict=font2)
     plt.ylabel('DSC', fontdict=font2)
     plt.legend()
-    plt.savefig('DSC_plot.png')
+    plt.savefig('graphs/DSC_plot.png')
 
     test_model = UNet()
     test_model.load_state_dict(torch.load(model_path))
